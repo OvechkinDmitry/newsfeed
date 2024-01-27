@@ -1,10 +1,8 @@
-import {Link, Route, Routes} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './styles/index.scss'
-import {Suspense} from "react";
 import {cx} from "shared/lib/class-names";
 import {useTheme} from "app/providers/theme";
-import {AboutPage} from "pages/about";
-import {MainPage} from "pages/main";
+import { Router } from "app/providers/router";
 
 export const App = () => {
     const {theme, toggleTheme} = useTheme()
@@ -14,11 +12,6 @@ export const App = () => {
         <br/>
         <Link to={'/'} children={'Main'}/>
         <br/>
-        <Suspense fallback={null}>
-            <Routes>
-                <Route path={'/about'} element={<AboutPage/>}/>
-                <Route path={'/'} element={<MainPage/>}/>
-            </Routes>
-        </Suspense>
+        <Router/>
     </div>
 }
