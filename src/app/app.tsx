@@ -1,10 +1,10 @@
 import {Link, Route, Routes} from 'react-router-dom'
 import './styles/index.scss'
-import {AsyncAbout} from "./pages/about/async";
-import {AsyncMain} from "./pages/main/async";
 import {Suspense} from "react";
-import {useTheme} from "./theme/use-theme";
-import {cx} from "./helpers/class-names";
+import {cx} from "shared/lib/class-names";
+import {useTheme} from "app/providers/theme";
+import {AboutPage} from "pages/about";
+import {MainPage} from "pages/main";
 
 export const App = () => {
     const {theme, toggleTheme} = useTheme()
@@ -16,8 +16,8 @@ export const App = () => {
         <br/>
         <Suspense fallback={null}>
             <Routes>
-                <Route path={'/about'} element={<AsyncAbout/>}/>
-                <Route path={'/'} element={<AsyncMain/>}/>
+                <Route path={'/about'} element={<AboutPage/>}/>
+                <Route path={'/'} element={<MainPage/>}/>
             </Routes>
         </Suspense>
     </div>
