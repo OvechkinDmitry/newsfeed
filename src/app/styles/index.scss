@@ -9,3 +9,11 @@
     background: var(--bg-color);
     color: var(--primary-color);
 }
+
+.content{
+    display: flex;
+}
+
+.page-content{
+    flex-grow: 1
+}

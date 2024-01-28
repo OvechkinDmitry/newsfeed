@@ -1,0 +1,21 @@
+.root{
+  width: 100%;
+  height: var(--navbar-height);
+  background: var(--inverted-bg-color);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-switcher{
+  svg{
+    fill: var(--bg-color);
+  }
+}
+
+.links{
+  margin-left: auto;
+  * + * {
+    margin-left: 8px;
+  }
+}
