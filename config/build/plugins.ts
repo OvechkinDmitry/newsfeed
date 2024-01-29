@@ -1,10 +1,16 @@
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import type {WebpackPluginInstance} from 'webpack';
-import { ProgressPlugin } from "webpack";
+import { ProgressPlugin, DefinePlugin, HotModuleReplacementPlugin } from "webpack";
 import {BuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
-export const buildPlugins = ({paths}: BuildOptions): WebpackPluginInstance[]  => {
+export const buildPlugins = ({paths, isDev}: BuildOptions): WebpackPluginInstance[]  => {
+    const devPlugins = isDev ? [
+        new ReactRefreshWebpackPlugin(),
+        new HotModuleReplacementPlugin(),
+    ] : []
+
     return [
         new HTMLWebpackPlugin({
             template: paths.html
@@ -13,6 +19,10 @@ export const buildPlugins = ({paths}: BuildOptions): WebpackPluginInstance[]  =>
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
-        })
+        }),
+        new DefinePlugin({
+            __IS_DEV__: isDev,
+        }),
+        ...devPlugins,
     ]
 }
