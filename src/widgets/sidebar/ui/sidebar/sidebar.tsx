@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { cx } from 'shared/lib/class-names';
-import { Button } from 'shared/ui/button';
+import { Button, ButtonTheme } from 'shared/ui/button';
 import styles from './sidebar.module.scss';
 
 interface Props {
@@ -12,7 +12,7 @@ export function Sidebar(props: Props) {
   const { className } = props;
   return (
     <div className={cx(styles.root, collapsed && styles.collapsed, className)}>
-      <Button onClick={() => setCollapsed((prev) => !prev)}>collapse</Button>
+      <Button theme={ButtonTheme.CLEAN} onClick={() => setCollapsed((prev) => !prev)}>collapse</Button>
     </div>
   );
 }
