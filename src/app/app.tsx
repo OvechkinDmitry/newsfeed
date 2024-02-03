@@ -5,7 +5,7 @@ import { Router } from 'app/providers/router';
 import { Navbar } from 'widgets/navbar';
 import { Sidebar } from 'widgets/sidebar';
 
-export function App() {
+export const App = () => {
   const { theme } = useTheme();
   return (
     <div className={cx('app', theme)}>
@@ -16,4 +16,4 @@ export function App() {
       </div>
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { cx } from '../class-names';
+import { cx } from 'shared/lib/class-names';
 
 describe('cx', () => {
   it('should work with strings', () => {

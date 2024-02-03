@@ -1,4 +1,3 @@
-import React from 'react';
 import { cx } from 'shared/lib/class-names';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
 import styles from './app-link.module.scss';

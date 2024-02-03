@@ -3,6 +3,7 @@ import type { WebpackPluginInstance } from 'webpack';
 import { ProgressPlugin, DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInstance[] => {
@@ -22,6 +23,9 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInsta
     }),
     new DefinePlugin({
       __IS_DEV__: isDev,
+    }),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
     }),
     ...devPlugins,
   ];
