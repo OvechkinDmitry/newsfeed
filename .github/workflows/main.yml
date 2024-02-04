@@ -23,11 +23,11 @@ jobs:
       - name: node modules installation
         run: npm ci
   linting:
-    needs: [deps-installation]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 17.x ]
+    needs: [deps-installation]
 
     steps:
       - name: Checkout Commit
@@ -41,11 +41,11 @@ jobs:
       - name: linting scss
         run: npm run lint:scss
   testing:
-    needs: [deps-installation]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 17.x ]
+    needs: [deps-installation]
 
     steps:
       - name: Checkout Commit
@@ -57,11 +57,11 @@ jobs:
       - name: unit tests
         run: npm run test:unit
   pipline:
-    needs: [deps-installation]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 17.x ]
+    needs: [deps-installation]
 
     steps:
       - name: Checkout Commit
