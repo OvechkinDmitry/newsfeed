@@ -12,7 +12,13 @@ export function Sidebar(props: Props) {
   const { className } = props;
   return (
     <div data-testid="sidebar" className={cx(styles.root, collapsed && styles.collapsed, className)}>
-      <Button theme={ButtonTheme.CLEAN} onClick={() => setCollapsed((prev) => !prev)}>collapse</Button>
+      <Button
+        className={cx(styles.button)}
+        theme={ButtonTheme.CLEAN}
+        onClick={() => setCollapsed((prev) => !prev)}
+      >
+        collapse
+      </Button>
     </div>
   );
 }

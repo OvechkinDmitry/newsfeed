@@ -1,4 +1,3 @@
-import React from 'react';
 import { cx } from 'shared/lib/class-names';
 import { Theme, useTheme } from 'app/providers/theme';
 import { Button } from 'shared/ui/button';

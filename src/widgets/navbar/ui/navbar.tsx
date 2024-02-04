@@ -1,4 +1,3 @@
-import React from 'react';
 import { cx } from 'shared/lib/class-names';
 import { Link } from 'shared/ui/link';
 import { ThemeSwitcher } from 'widgets/theme-swither';

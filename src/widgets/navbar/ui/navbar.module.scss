@@ -16,6 +16,10 @@
 .links {
   margin-left: auto;
 
+  a {
+    color: var(--inverted-primary-color);
+  }
+
   * + * {
     margin-left: 8px;
   }

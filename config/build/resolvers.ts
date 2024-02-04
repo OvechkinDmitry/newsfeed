@@ -6,7 +6,7 @@ export const buildResolvers = (options: BuildOptions): ResolveOptions => {
   return {
     extensions: ['.tsx', '.ts', '.js'],
     preferAbsolute: true,
-    modules: [paths.srs, 'node_modules'],
+    modules: [paths.src, 'node_modules'],
     mainFiles: ['index'],
     alias: {},
   };
