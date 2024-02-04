@@ -1,2 +1,2 @@
-# newsfeed
+# news feed
 news feed proj
