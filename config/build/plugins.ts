@@ -10,6 +10,9 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInsta
   const devPlugins = isDev ? [
     new ReactRefreshWebpackPlugin(),
     new HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }),
   ] : [];
 
   return [
@@ -23,9 +26,6 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): WebpackPluginInsta
     }),
     new DefinePlugin({
       __IS_DEV__: isDev,
-    }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
     }),
     ...devPlugins,
   ];
