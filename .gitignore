@@ -1,5 +1,6 @@
 # External config
 config.json
+/storybook-static
 
 # Logs
 logs

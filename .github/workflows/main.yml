@@ -56,7 +56,7 @@ jobs:
         run: npm run lint:ts
       - name: linting scss
         run: npm run lint:scss
-  testing:
+  testing-unit:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -80,7 +80,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: unit tests
         run: npm run test:unit
-  pipline:
+  production-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -104,3 +104,30 @@ jobs:
             ${{ runner.os }}-node-
       - name: project building
         run: npm run build:prod
+
+  testing-ui:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+    needs: [ deps-installation ]
+
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: restoring dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: build storybook
+        run: npm run storybook:build
+      - name: screenshot testing
+        run: npm run test:ui:ci
