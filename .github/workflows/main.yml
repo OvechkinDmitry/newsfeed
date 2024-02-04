@@ -20,8 +20,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - name: node modules installation
-        run: npm ci
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: dependencies installation
+        run: npm install
   linting:
     runs-on: ubuntu-latest
     strategy:
@@ -70,5 +78,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: restoring dependencies
+        uses: actions/cache@v2
+        id: cache-dependencies
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: project building
         run: npm run build:prod
