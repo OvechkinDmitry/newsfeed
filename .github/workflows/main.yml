@@ -70,4 +70,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: project building
         run: npm run build:prod
