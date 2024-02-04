@@ -7,6 +7,38 @@ on:
   pull_request:
     branches: [master, dev]
 jobs:
+  linting:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: linting typescript
+        run: npm run lint:ts
+      - name: linting scss
+        run: npm run lint:scss
+  testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: unit tests
+        run: npm run test:unit
   pipline:
     runs-on: ubuntu-latest
     strategy:
@@ -24,9 +56,3 @@ jobs:
         run: npm ci
       - name: project building
         run: npm run build:prod
-      - name: linting typescript
-        run: npm run lint:ts
-      - name: linting scss
-        run: npm run lint:scss
-      - name: unit tests
-        run: npm run test:unit
