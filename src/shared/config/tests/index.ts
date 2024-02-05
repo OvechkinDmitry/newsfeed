@@ -1,1 +1,1 @@
-export { RenderWithRouter } from './render-with-router';
+export { renderWithProviders } from './render-with-providers';

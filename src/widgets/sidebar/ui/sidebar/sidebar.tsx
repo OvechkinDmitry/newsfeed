@@ -23,7 +23,6 @@ export function Sidebar(props: Props) {
           square
           className={cx(styles.button)}
           onClick={() => setCollapsed((prev) => !prev)}
-          size={ButtonSize.XL}
         >
           <Icon size={32} fill="currentColor" />
         </Button>
