@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { cx } from 'shared/lib/class-names';
-import { Button, ButtonTheme } from 'shared/ui/button';
+import { Button, ButtonSize } from 'shared/ui/button';
+import {
+  AiOutlineMenuFold, AiOutlineMenuUnfold, AiOutlineHome, AiOutlineInfoCircle,
+} from 'react-icons/ai';
+import { Link } from 'shared/ui/link';
+import { RoutePaths } from 'app/config/route/config';
 import styles from './sidebar.module.scss';
 
 interface Props {
@@ -10,15 +15,29 @@ interface Props {
 export function Sidebar(props: Props) {
   const [collapsed, setCollapsed] = useState(() => false);
   const { className } = props;
+  const Icon = collapsed ? AiOutlineMenuFold : AiOutlineMenuUnfold;
   return (
     <div data-testid="sidebar" className={cx(styles.root, collapsed && styles.collapsed, className)}>
-      <Button
-        className={cx(styles.button)}
-        theme={ButtonTheme.CLEAN}
-        onClick={() => setCollapsed((prev) => !prev)}
-      >
-        collapse
-      </Button>
+      <div className={cx(styles['sidebar-control'])}>
+        <Button
+          square
+          className={cx(styles.button)}
+          onClick={() => setCollapsed((prev) => !prev)}
+          size={ButtonSize.XL}
+        >
+          <Icon size={32} fill="currentColor" />
+        </Button>
+      </div>
+      <div className={cx(styles.items)}>
+        <Link className={styles.item} to={RoutePaths.main}>
+          <AiOutlineHome size={32} />
+          <span children="Главная" />
+        </Link>
+        <Link className={styles.item} to={RoutePaths.about}>
+          <AiOutlineInfoCircle size={32} />
+          <span children="О сайте" />
+        </Link>
+      </div>
     </div>
   );
 }
