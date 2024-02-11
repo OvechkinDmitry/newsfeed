@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import { Sidebar } from 'widgets/sidebar/ui/sidebar/sidebar';
 import { renderWithProviders } from 'shared/config/tests';
 
