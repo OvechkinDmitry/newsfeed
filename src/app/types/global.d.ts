@@ -9,7 +9,7 @@ declare module '*.scss' {
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
-declare const __IS_DEV__: string;
+declare const __IS_DEV__: boolean;
 declare module '*.svg' {
     const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
     export default content;
