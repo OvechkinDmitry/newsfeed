@@ -15,8 +15,8 @@ export function Navbar(props: Props) {
   return (
     <div className={cx(styles.root, className)}>
       <ThemeSwitcher className={cx(styles['theme-switcher'])} />
-      <div className={cx(styles.links)}>
-        /
+      <div className={cx(styles.links)} onClick={() => setOpened(true)}>
+        toggle
       </div>
       {opened && (
       <Portal>

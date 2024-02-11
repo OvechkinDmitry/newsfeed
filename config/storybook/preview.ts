@@ -9,11 +9,11 @@ export const preview: Preview = {
   globalTypes: {
     theme: {
       description: 'Global theme for components',
-      defaultValue: 'light',
+      defaultValue: 'app-light-theme',
       toolbar: {
         title: 'Theme',
         icon: 'circlehollow',
-        items: ['light', 'dark'],
+        items: ['app-light-theme', 'app-dark-theme'],
         dynamicTitle: true,
       },
     },
