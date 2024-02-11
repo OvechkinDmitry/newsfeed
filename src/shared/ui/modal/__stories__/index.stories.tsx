@@ -13,9 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Text text text text text text text text text text text text text text '
-        + 'text text text text text text text text text text'
-        + ' text text text text text text text text text text text',
+    children: 'Text text text text text text text text text text text text text text',
   },
 };
 
