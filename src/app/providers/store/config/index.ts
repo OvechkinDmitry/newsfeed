@@ -1,9 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/providers/store/config/types';
+import { User } from 'entities/user';
 
-// @todo заменить any на тип
+const rootReducer = combineReducers<StateSchema>({
+  user: User.reducer,
+});
+
 export function createReduxStore(preloadedState?: any) {
-  return configureStore({
-    reducer: {},
+  return configureStore<StateSchema>({
+    reducer: rootReducer,
     devTools: __IS_DEV__,
     preloadedState,
   });

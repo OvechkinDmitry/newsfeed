@@ -1,0 +1,12 @@
+.root{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button{
+  align-self: flex-end;
+  width: fit-content;
+  border-radius: 8px;
+}
